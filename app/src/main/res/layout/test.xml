@@ -1,0 +1,66 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/dr_ripple_round_24"
+        android:onClick="@{bOnClick::onClick}">
+        <!--     android:translationZ="@dimen/dp_2"
+             -->
+
+        <View
+            android:id="@+id/nav_plants_item_image_area"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/dr_rect_round_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cost_per_kg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_8"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="@color/colorOnSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5000/kg" />
+
+        <TextView
+            android:id="@+id/grocery_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginStart="8dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="@color/colorOnSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cost_per_kg"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sangli" />
+
+        <Button
+            android:id="@+id/iconButton"
+            style="?attr/materialIconButtonFilledTonalStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/arrow_forward_ios_24px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

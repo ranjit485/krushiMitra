@@ -17,14 +17,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.radioactives.krushimitra.fragments.MapFragment;
 import com.radioactives.krushimitra.fragments.MarketFragment;
 import com.radioactives.krushimitra.fragments.ScannerFragment;
 import com.radioactives.krushimitra.fragments.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity {
     private final Fragment weatherFragment = new WeatherFragment();
+    private final Fragment mapFragment = new MapFragment();
     private final Fragment marketFragment = new MarketFragment();
     private static final int PERMISSION_REQUEST_CODE = 101;
 
@@ -33,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        MaterialToolbar toolbar = findViewById(R.id.topAppBar);
+        setSupportActionBar(toolbar);  // This line is required
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -61,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         // Bottom nav
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, weatherFragment).commit();
+                .replace(R.id.frame_container,mapFragment).commit();
 
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment;

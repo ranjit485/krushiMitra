@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
-    android:layout_marginTop="25dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false">
@@ -12,18 +11,19 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="Krushi Mitra"
+        android:layout_height="80dp"
+        android:background="?attr/colorSurface"
+        app:title="Weather Today"
         app:titleCentered="true"
-        android:background="?attr/colorSurface" />
+        app:titleMarginTop="30dp" />
 
     <!-- Fragment container -->
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="70dp"
-        android:layout_marginTop="56dp"/>
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="56dp" />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,17 +32,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="?attr/colorSurface"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 
-    <!-- FloatingActionButton (FAB) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="32dp"
-        android:contentDescription="Scan"
+        android:layout_marginBottom="40dp"
+        app:layout_anchor="@id/bottom_navigation"
+        app:layout_anchorGravity="top|center"
         app:srcCompat="@drawable/ic_if_scan"
-        app:tint="@android:color/white"
-        app:backgroundTint="?attr/colorPrimary" />
+        app:backgroundTint="?attr/colorPrimary"
+        android:contentDescription="Scan"
+        app:tint="@android:color/white"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

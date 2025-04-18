@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageCapture;
 import androidx.camera.core.ImageCaptureException;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.radioactives.krushimitra.R;
 
@@ -37,8 +39,13 @@ public class ScannerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scanner, container, false);
         previewView = view.findViewById(R.id.previewView);
-        Button captureButton = view.findViewById(R.id.captureButton);
+        FloatingActionButton captureButton = view.findViewById(R.id.captureButton);
 
+
+        if (getActivity() != null) {
+            // This line changes the title of the MaterialToolbar from the Activity
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Scan Your Plant.");
+        }
         captureButton.setOnClickListener(v -> takePhoto());
 
         cameraExecutor = Executors.newSingleThreadExecutor();
