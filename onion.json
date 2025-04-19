@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Onion",
+    "location": "Sangli",
+    "farmName": "Onion Bhavan",
+    "costPerKg": "₹22/kg",
+    "latitude": 16.8531,
+    "longitude": 74.5690,
+    "farmerName": "Aniket Raut",
+    "contact": "9833000001"
+  },
+  {
+    "name": "Onion",
+    "location": "Miraj",
+    "farmName": "Red Pearl Farms",
+    "costPerKg": "₹23/kg",
+    "latitude": 16.8325,
+    "longitude": 74.6845,
+    "farmerName": "Tushar Sawant",
+    "contact": "9833000002"
+  },
+  {
+    "name": "Onion",
+    "location": "Tasgaon",
+    "farmName": "Onion Galaxy",
+    "costPerKg": "₹24/kg",
+    "latitude": 17.0342,
+    "longitude": 74.6030,
+    "farmerName": "Ajinkya Bhosale",
+    "contact": "9833000003"
+  },
+  {
+    "name": "Onion",
+    "location": "Islampur",
+    "farmName": "FarmBox Onions",
+    "costPerKg": "₹20/kg",
+    "latitude": 17.1610,
+    "longitude": 74.2620,
+    "farmerName": "Kunal Mane",
+    "contact": "9833000004"
+  },
+  {
+    "name": "Onion",
+    "location": "Kavathe Mahankal",
+    "farmName": "Mahankal Agro",
+    "costPerKg": "₹21/kg",
+    "latitude": 17.0100,
+    "longitude": 75.2522,
+    "farmerName": "Tejas Ghorpade",
+    "contact": "9833000005"
+  },
+  {
+    "name": "Onion",
+    "location": "Palus",
+    "farmName": "Palus Onion Mart",
+    "costPerKg": "₹22/kg",
+    "latitude": 17.0789,
+    "longitude": 74.4199,
+    "farmerName": "Jaydeep Patil",
+    "contact": "9833000006"
+  }
+]

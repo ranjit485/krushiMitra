@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Carrot",
+    "location": "Sangli",
+    "farmName": "Healthy Roots Farm",
+    "costPerKg": "₹28/kg",
+    "latitude": 16.8543,
+    "longitude": 74.5681,
+    "farmerName": "Rohit Pawar",
+    "contact": "9823000001"
+  },
+  {
+    "name": "Carrot",
+    "location": "Tasgaon",
+    "farmName": "Orange Harvest",
+    "costPerKg": "₹26/kg",
+    "latitude": 17.0320,
+    "longitude": 74.6022,
+    "farmerName": "Nilesh Deshmukh",
+    "contact": "9823000002"
+  },
+  {
+    "name": "Carrot",
+    "location": "Miraj",
+    "farmName": "Miraj Fresh",
+    "costPerKg": "₹30/kg",
+    "latitude": 16.8301,
+    "longitude": 74.6825,
+    "farmerName": "Swapnil Jadhav",
+    "contact": "9823000003"
+  },
+  {
+    "name": "Carrot",
+    "location": "Islampur",
+    "farmName": "Islampur Organics",
+    "costPerKg": "₹27/kg",
+    "latitude": 17.1600,
+    "longitude": 74.2645,
+    "farmerName": "Vikas Shinde",
+    "contact": "9823000004"
+  },
+  {
+    "name": "Carrot",
+    "location": "Palus",
+    "farmName": "Palus Farm Fresh",
+    "costPerKg": "₹25/kg",
+    "latitude": 17.0777,
+    "longitude": 74.4189,
+    "farmerName": "Sandip Patil",
+    "contact": "9823000005"
+  },
+  {
+    "name": "Carrot",
+    "location": "Jath",
+    "farmName": "Jath Harvesters",
+    "costPerKg": "₹29/kg",
+    "latitude": 17.0433,
+    "longitude": 75.2301,
+    "farmerName": "Amol More",
+    "contact": "9823000006"
+  }
+]
