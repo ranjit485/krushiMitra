@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Tomato",
+    "location": "Sangli",
+    "farmName": "Green Valley Farms",
+    "costPerKg": "₹30",
+    "latitude": 16.8544,
+    "longitude": 74.5648,
+    "farmerName": "Ravi Patil",
+    "contact": "9876543210"
+  },
+  {
+    "name": "Tomato",
+    "location": "Kolhapur",
+    "farmName": "RedSun Farms",
+    "costPerKg": "₹32",
+    "latitude": 16.7050,
+    "longitude": 74.2433,
+    "farmerName": "Shyam Jadhav",
+    "contact": "8765432109"
+  },
+  {
+    "name": "Tomato",
+    "location": "Islampur",
+    "farmName": "Krushi Shakti",
+    "costPerKg": "₹29",
+    "latitude": 17.0282,
+    "longitude": 74.2670,
+    "farmerName": "Vinayak Pawar",
+    "contact": "9988776655"
+  }
+]

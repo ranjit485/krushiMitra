@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Potato",
+    "location": "Satara",
+    "farmName": "Hilltop Agri",
+    "costPerKg": "₹20",
+    "latitude": 17.6800,
+    "longitude": 73.9950,
+    "farmerName": "Anil Deshmukh",
+    "contact": "9123456780"
+  },
+  {
+    "name": "Potato",
+    "location": "Miraj",
+    "farmName": "Sunshine Farms",
+    "costPerKg": "₹22",
+    "latitude": 16.8250,
+    "longitude": 74.6480,
+    "farmerName": "Sunil More",
+    "contact": "9012345678"
+  },
+  {
+    "name": "Potato",
+    "location": "Karad",
+    "farmName": "RiverSide Agro",
+    "costPerKg": "₹21",
+    "latitude": 17.2892,
+    "longitude": 74.1811,
+    "farmerName": "Mangesh Shinde",
+    "contact": "8899776655"
+  }
+]
