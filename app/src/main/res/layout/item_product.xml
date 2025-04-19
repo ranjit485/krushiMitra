@@ -1,34 +1,86 @@
-<androidx.cardview.widget.CardView
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:padding="16dp"
-    android:elevation="4dp">
+    android:layout_margin="@dimen/dp_12"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="24dp"
+    app:strokeColor="@color/md_theme_outlineVariant"
+    app:strokeWidth="0dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:padding="@dimen/dp_16">
 
-        <!-- Product Name -->
+        <!-- Grocery Name -->
         <TextView
-            android:id="@+id/product_name"
+            android:id="@+id/grocery_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Product Name"
-            android:textSize="16sp"
-            android:textColor="#000000" />
+            android:layout_marginTop="@dimen/dp_12"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/colorOnSurface"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iconButton"
+            tools:text="Onion" />
 
-        <!-- Rate per kg -->
+        <!-- Forward Icon Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/iconButton"
+            style="?attr/materialIconButtonFilledTonalStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:icon="@drawable/arrow_forward_ios_24px"
+            app:iconTint="@color/md_theme_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/grocery_name" />
+
+        <!-- Cost -->
         <TextView
-            android:id="@+id/rate_per_kg"
+            android:id="@+id/cost_per_kg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="₹ / kg"
-            android:textSize="14sp"
-            android:textColor="#FF5722" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+            android:layout_marginTop="@dimen/dp_4"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textColor="@color/colorOnSurface"
+            app:layout_constraintTop_toBottomOf="@id/grocery_name"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="₹5000/kg" />
+
+        <!-- Farm Location -->
+        <TextView
+            android:id="@+id/farm_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginStart="@dimen/dp_12"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintTop_toBottomOf="@id/grocery_name"
+            app:layout_constraintStart_toEndOf="@id/cost_per_kg"
+            tools:text="Sangli" />
+
+        <!-- Farm Name -->
+        <TextView
+            android:id="@+id/farm_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            app:layout_constraintTop_toBottomOf="@id/cost_per_kg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Prabal Sheti Farm" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

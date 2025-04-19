@@ -1,42 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <!-- SearchBar -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:elevation="@dimen/dp_0">
-
-        <com.google.android.material.search.SearchBar
-            android:id="@+id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="search plant .."
-            app:navigationIcon="@drawable/round_keyboard_arrow_left_24" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-    <!-- RecyclerView -->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_recycler_view"
+    <!-- LinearLayout to organize Spinner and RecyclerView -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
         android:orientation="vertical"
         android:paddingStart="@dimen/dp_20"
         android:paddingEnd="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_8">
+
+        <!-- Spinner for selecting plant types or categories -->
+        <Spinner
+            android:id="@+id/spinner_select_plant"
+            style="@style/CustomSpinnerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:entries="@array/plant_options"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16"
+            android:spinnerMode="dropdown" />
+
+        <!-- RecyclerView for displaying products -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/product_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+        android:clipToPadding="false"
+        android:orientation="vertical"
         android:paddingBottom="@dimen/dp_200"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/search_plants_item" />
+        tools:listitem="@layout/item_product" />
+
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_grocery"
+        style="@style/Widget.Material3.FloatingActionButton.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/add_24px"
+        android:contentDescription="Add Grocery"
+        app:tint="@android:color/white"
+        app:backgroundTint="@color/md_theme_primary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

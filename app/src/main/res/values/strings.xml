@@ -3,4 +3,11 @@
     <string name="app_name">KrushiMitra\n</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="plant_options">
+        <item>Tomato</item>
+        <item>Onion</item>
+        <item>Carrot</item>
+        <item>Potato</item>
+        <!-- Add more plant types here -->
+    </string-array>
 </resources>

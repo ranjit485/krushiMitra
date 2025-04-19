@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         // Bottom nav
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container,mapFragment).commit();
+                .replace(R.id.frame_container,weatherFragment).commit();
 
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment;
