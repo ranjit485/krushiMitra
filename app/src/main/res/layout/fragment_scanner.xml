@@ -55,6 +55,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <ProgressBar
+            android:visibility="gone"
             android:id="@+id/albums_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

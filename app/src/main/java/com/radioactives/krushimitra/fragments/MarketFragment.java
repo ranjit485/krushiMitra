@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +20,7 @@ import com.radioactives.krushimitra.adapters.GroceryAdapter;
 import com.radioactives.krushimitra.bottomsheets.AddGroceryBottomSheet;
 import com.radioactives.krushimitra.interfaces.GroceryApiService;
 import com.radioactives.krushimitra.modal.GroceryItem;
-import com.radioactives.krushimitra.utils.RetrofitClientForGrocery;
+import com.radioactives.krushimitra.utils.GroceryApiClient;
 
 import java.util.List;
 
@@ -75,25 +75,8 @@ public class MarketFragment extends Fragment {
     }
 
     private void loadGroceryItems(String itemName) {
-        GroceryApiService api = RetrofitClientForGrocery.getGroceryApiService();
-        Call<List<GroceryItem>> call;
-
-        switch (itemName.toLowerCase()) {
-            case "tomato":
-                call = api.getTomatoes();
-                break;
-            case "potato":
-                call = api.getPotatoes();
-                break;
-            case "carrot":
-                call = api.getCarrot();
-                break;
-            case "onion":
-                call = api.getOnion();
-                break;
-            default:
-                return;
-        }
+        GroceryApiService api = GroceryApiClient.getClient().create(GroceryApiService.class);
+        Call<List<GroceryItem>> call = api.getItemsByProduct(itemName);
 
         call.enqueue(new Callback<List<GroceryItem>>() {
             @Override
@@ -123,8 +106,9 @@ public class MarketFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<List<GroceryItem>> call, @NonNull Throwable t) {
-                // Handle error
+                Toast.makeText(getContext(), "Failed to load items: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }

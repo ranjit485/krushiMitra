@@ -1,21 +1,22 @@
 package com.radioactives.krushimitra.interfaces;
 
 import com.radioactives.krushimitra.modal.GroceryItem;
+
 import java.util.List;
 import retrofit2.Call;
-import retrofit2.http.GET;
+import retrofit2.http.*;
 
 public interface GroceryApiService {
 
-    @GET("ranjit485/krushiMitra/refs/heads/master/tomato.json")
-    Call<List<GroceryItem>> getTomatoes();
+    @GET("api/grocery/all")
+    Call<List<GroceryItem>> getAllItems();
 
-    @GET("ranjit485/krushiMitra/refs/heads/master/potato.json")
-    Call<List<GroceryItem>> getPotatoes();
+    @GET("api/grocery/products/{productName}")
+    Call<List<GroceryItem>> getItemsByProduct(@Path("productName") String productName);
 
-    @GET("ranjit485/krushiMitra/refs/heads/master/onion.json")
-    Call<List<GroceryItem>> getOnion();
+    @GET("api/grocery/{id}")
+    Call<GroceryItem> getItemById(@Path("id") Long id);
 
-    @GET("ranjit485/krushiMitra/refs/heads/master/carrot.json")
-    Call<List<GroceryItem>> getCarrot();
+    @POST("api/grocery/add")
+    Call<GroceryItem> addItem(@Body GroceryItem item);
 }

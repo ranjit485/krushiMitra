@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -14,15 +15,18 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.radioactives.krushimitra.R;
-import com.radioactives.krushimitra.interfaces.ApiService;
+import com.radioactives.krushimitra.interfaces.GroceryApiService;
 import com.radioactives.krushimitra.modal.GroceryItem;
-import com.radioactives.krushimitra.utils.ApiClient;
+import com.radioactives.krushimitra.utils.GroceryApiClient;
+import com.radioactives.krushimitra.utils.RetrofitClient;
+import com.radioactives.krushimitra.utils.RetrofitClientForGrocery;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddGroceryBottomSheet extends BottomSheetDialogFragment {
+    private ProgressBar progressBar;
 
     private Button btnSubmit;
     private EditText etFarmName, etFarmerName, etContact, etCostPerKg;
@@ -50,6 +54,7 @@ public class AddGroceryBottomSheet extends BottomSheetDialogFragment {
         etCostPerKg = view.findViewById(R.id.et_cost_per_kg);
         spinnerProductName = view.findViewById(R.id.spinner_product_name);
         btnSubmit = view.findViewById(R.id.btn_submit);
+        progressBar = view.findViewById(R.id.progress_bar);
 
         // Set OnClickListener for the Submit button
         btnSubmit.setOnClickListener(v -> {
@@ -83,32 +88,37 @@ public class AddGroceryBottomSheet extends BottomSheetDialogFragment {
 
         return view;
     }
-
     private void submitGroceryItem(GroceryItem item) {
-        // Initialize Retrofit
-        ApiService apiService = ApiClient.getRetrofit().create(ApiService.class);
+        progressBar.setVisibility(View.VISIBLE);
+        btnSubmit.setEnabled(false);
 
-        // Make the API call to submit the data
-        Call<Void> call = apiService.submitGroceryItem(item);
-        call.enqueue(new Callback<Void>() {
+        GroceryApiService apiService = RetrofitClientForGrocery.getGroceryApiService();
+
+        apiService.addItem(item).enqueue(new Callback<GroceryItem>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NonNull Call<GroceryItem> call, @NonNull Response<GroceryItem> response) {
+                progressBar.setVisibility(View.GONE);
+                btnSubmit.setEnabled(true);
+
                 if (response.isSuccessful()) {
-                    // Notify listener and dismiss the BottomSheet
+                    Toast.makeText(getContext(), "Item added successfully!", Toast.LENGTH_SHORT).show();
                     if (listener != null) {
-                        listener.onSubmit(item);
+                        listener.onSubmit(response.body());
                     }
                     dismiss();
-                    Toast.makeText(getContext(), "Grocery item submitted successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "Submission failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Failed to add item", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(@NonNull Call<GroceryItem> call, @NonNull Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                btnSubmit.setEnabled(true);
                 Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
 }

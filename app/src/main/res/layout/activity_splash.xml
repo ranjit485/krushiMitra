@@ -9,9 +9,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="260sp"
-        android:layout_height="260sp"
+        android:layout_width="280sp"
+        android:layout_height="280sp"
         android:layout_marginTop="150dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/spashlogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
+        style="@style/MaterialAlertDialog.Material3.Title.Text"
         android:textSize="30sp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

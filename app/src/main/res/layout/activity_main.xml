@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="?attr/colorSurface"
-        app:title="Weather Today"
+        app:title="Weather"
         app:titleCentered="true"
         app:titleMarginTop="30dp" />
 
