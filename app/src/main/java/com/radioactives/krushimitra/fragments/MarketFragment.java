@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.radioactives.krushimitra.R;
 import com.radioactives.krushimitra.adapters.GroceryAdapter;
@@ -31,6 +33,7 @@ import retrofit2.Response;
 public class MarketFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
     private Spinner spinner;
 
     @Override
@@ -38,8 +41,10 @@ public class MarketFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_market, container, false);
 
+        progressBar=view.findViewById(R.id.progressBar);
+
         if (getActivity() != null) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Search For Market");
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Best Price");
         }
 
         spinner = view.findViewById(R.id.spinner_select_plant);
@@ -58,7 +63,7 @@ public class MarketFragment extends Fragment {
                 // Do nothing
             }
         });
-        FloatingActionButton fab = view.findViewById(R.id.fab_add_grocery);
+        ExtendedFloatingActionButton fab = view.findViewById(R.id.fab_add_grocery);
 
         fab.setOnClickListener(v -> {
             AddGroceryBottomSheet bottomSheet = new AddGroceryBottomSheet();
@@ -73,15 +78,19 @@ public class MarketFragment extends Fragment {
 
         return view;
     }
-
     private void loadGroceryItems(String itemName) {
+        progressBar.setVisibility(View.VISIBLE);  // Show progress bar
+
         GroceryApiService api = GroceryApiClient.getClient().create(GroceryApiService.class);
         Call<List<GroceryItem>> call = api.getItemsByProduct(itemName);
 
         call.enqueue(new Callback<List<GroceryItem>>() {
             @Override
             public void onResponse(@NonNull Call<List<GroceryItem>> call, @NonNull Response<List<GroceryItem>> response) {
+                progressBar.setVisibility(View.GONE);  // Hide progress bar
                 if (response.isSuccessful() && response.body() != null) {
+                    if (!isAdded()) return; // Make sure fragment is attached
+
                     GroceryAdapter adapter = new GroceryAdapter(requireContext(), response.body(), item -> {
                         Bundle bundle = new Bundle();
                         bundle.putString("name", item.getName());
@@ -106,9 +115,11 @@ public class MarketFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<List<GroceryItem>> call, @NonNull Throwable t) {
+                progressBar.setVisibility(View.GONE);  // Hide progress bar
                 Toast.makeText(getContext(), "Failed to load items: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 
 }

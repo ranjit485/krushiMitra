@@ -20,13 +20,13 @@
             style="@style/CustomSpinnerStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_marginBottom="@dimen/dp_8"
             android:backgroundTint="?attr/colorPrimaryVariant"
             android:entries="@array/plant_options"
             android:paddingStart="@dimen/dp_16"
             android:paddingEnd="@dimen/dp_16"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dialog" />
 
         <!-- RecyclerView for displaying products -->
         <androidx.recyclerview.widget.RecyclerView
@@ -41,17 +41,29 @@
         tools:listitem="@layout/item_product" />
 
     </LinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab_add_grocery"
-        style="@style/Widget.Material3.FloatingActionButton.Secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="70dp"
-        android:src="@drawable/add_24px"
-        android:contentDescription="Add Grocery"
+        android:text="Sell"
+        app:iconTint="?attr/colorOnPrimary"
+        android:textColor="?attr/colorOnPrimary"
+        app:icon="@drawable/sell_24px"
         app:tint="@android:color/white"
         app:backgroundTint="@color/md_theme_primary" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_centerInParent="true" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

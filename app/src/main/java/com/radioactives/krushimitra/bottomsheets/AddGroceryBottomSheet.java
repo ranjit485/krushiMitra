@@ -29,7 +29,7 @@ public class AddGroceryBottomSheet extends BottomSheetDialogFragment {
     private ProgressBar progressBar;
 
     private Button btnSubmit;
-    private EditText etFarmName, etFarmerName, etContact, etCostPerKg;
+    private EditText etFarmName, etFarmerName, etContact, etCostPerKg,cityName;
     private Spinner spinnerProductName;
 
     public interface GrocerySubmitListener {
@@ -53,6 +53,9 @@ public class AddGroceryBottomSheet extends BottomSheetDialogFragment {
         etContact = view.findViewById(R.id.et_contact);
         etCostPerKg = view.findViewById(R.id.et_cost_per_kg);
         spinnerProductName = view.findViewById(R.id.spinner_product_name);
+        cityName = view.findViewById(R.id.et_city_name);
+
+
         btnSubmit = view.findViewById(R.id.btn_submit);
         progressBar = view.findViewById(R.id.progress_bar);
 
@@ -62,10 +65,11 @@ public class AddGroceryBottomSheet extends BottomSheetDialogFragment {
             String farmerName = etFarmerName.getText().toString();
             String contact = etContact.getText().toString();
             String costPerKg = etCostPerKg.getText().toString();
+            String cityNameLocal = cityName.getText().toString();
             String productName = spinnerProductName.getSelectedItem().toString();
 
             // Validate input fields
-            if ( farmName.isEmpty() || farmerName.isEmpty() || contact.isEmpty() || costPerKg.isEmpty()) {
+            if ( cityNameLocal.isEmpty() || farmerName.isEmpty() || contact.isEmpty() || costPerKg.isEmpty()) {
                 Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -73,9 +77,9 @@ public class AddGroceryBottomSheet extends BottomSheetDialogFragment {
             // Create GroceryItem object
             GroceryItem item = new GroceryItem(
                     productName,
+                    cityNameLocal,
                     farmName,
-                    contact,
-                    costPerKg,
+                    "₹"+costPerKg+"/Kg",
                     0.0, // Example latitude
                     0.0, // Example longitude
                     farmerName,

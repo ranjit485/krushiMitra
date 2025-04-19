@@ -166,53 +166,6 @@ public class ScannerFragment extends Fragment {
     }
 
 
-//
-//    private void runInference(File photoFile) {
-//        Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
-//        Bitmap resized = Bitmap.createScaledBitmap(bitmap, MODEL_INPUT_SIZE, MODEL_INPUT_SIZE, true);
-//
-//        try {
-//            // Load model
-//            Interpreter tflite = new Interpreter(loadModelFile("plant_disease_model.tflite"));
-//
-//            // Preprocess image
-//            TensorImage tensorImage = new TensorImage(DataType.FLOAT32);
-//            tensorImage.load(resized);
-//
-//            // ImageProcessor for resizing and normalization
-//            ImageProcessor imageProcessor = new ImageProcessor.Builder()
-//                    .add(new ResizeOp(MODEL_INPUT_SIZE, MODEL_INPUT_SIZE, ResizeOp.ResizeMethod.BILINEAR))
-//                    .add(new NormalizeOp(0, 255)) // Normalizing pixel values to [0, 1]
-//                    .build();
-//            tensorImage = imageProcessor.process(tensorImage);
-//
-//            // Get output shape dynamically
-//            int[] outputShape = tflite.getOutputTensor(0).shape(); // e.g., [1, 5]
-//            TensorBuffer outputBuffer = TensorBuffer.createFixedSize(outputShape, DataType.FLOAT32);
-//
-//            // Run inference
-//            tflite.run(tensorImage.getBuffer(), outputBuffer.getBuffer());
-//
-//            // Get output array and find the max prediction
-//            float[] output = outputBuffer.getFloatArray();
-//            int maxIdx = 0;
-//            float maxProb = output[0];
-//            for (int i = 1; i < output.length; i++) {
-//                if (output[i] > maxProb) {
-//                    maxProb = output[i];
-//                    maxIdx = i;
-//                }
-//            }
-//
-//            // Get prediction label
-//            String prediction = labels[maxIdx];
-//            Toast.makeText(requireContext(), "Prediction: " + prediction, Toast.LENGTH_LONG).show();
-//            ttsManager.speak("Your Plant is.."+prediction);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     private MappedByteBuffer loadModelFile(String modelName) throws IOException {
         FileInputStream inputStream = new FileInputStream(requireContext().getAssets().openFd(modelName).getFileDescriptor());
         FileChannel fileChannel = inputStream.getChannel();

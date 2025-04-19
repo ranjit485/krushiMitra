@@ -33,9 +33,9 @@ public class ResultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_result, container, false);
 
-        TextView predictionTextView = view.findViewById(R.id.predictionTextView);
-        TextView probabilityTextView = view.findViewById(R.id.probabilityTextView);
-        ImageView imageView = view.findViewById(R.id.imageView);
+        TextView predictionTextView = view.findViewById(R.id.nav_about_fragment_title);
+        TextView probabilityTextView = view.findViewById(R.id.nav_about_fragment_subtitle);
+        ImageView imageView = view.findViewById(R.id.nav_about_fragment_image);
 
         if (getArguments() != null) {
             String prediction = getArguments().getString(ARG_PREDICTION);
@@ -43,8 +43,8 @@ public class ResultFragment extends Fragment {
             String imagePath = getArguments().getString(ARG_IMAGE_PATH);
 
             // Set the prediction and probability text
-            predictionTextView.setText("Prediction: " + prediction);
-            probabilityTextView.setText("Probability: " + probability);
+            predictionTextView.setText(prediction);
+            probabilityTextView.setText("" + probability);
 
             // Load the captured image
             Bitmap bitmap = BitmapFactory.decodeFile(imagePath);

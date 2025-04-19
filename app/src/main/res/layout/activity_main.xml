@@ -11,11 +11,11 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:background="?attr/colorSurface"
         app:title="Weather"
-        app:titleCentered="true"
-        app:titleMarginTop="30dp" />
+        app:navigationIcon="@drawable/eco_24px"
+        app:titleCentered="true" />
 
     <!-- Fragment container -->
     <FrameLayout
@@ -46,6 +46,6 @@
         app:srcCompat="@drawable/ic_if_scan"
         app:backgroundTint="?attr/colorPrimary"
         android:contentDescription="Scan"
-        app:tint="@android:color/white"/>
+        app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

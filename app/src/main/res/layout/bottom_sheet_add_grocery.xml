@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/MaterialAlertDialog.Material3.Title.Text"
-            android:text="Add Grocery Product"
+            android:text="Add Product"
             android:textAppearance="?attr/textAppearanceHeadlineSmall"
             android:textColor="@color/md_theme_primary"
             android:paddingBottom="8dp" />
@@ -25,17 +25,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select Product"
+            android:layout_marginTop="@dimen/dp_10"
             android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:paddingTop="8dp" />
+            android:padding="8dp" />
 
         <Spinner
             android:id="@+id/spinner_product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/plant_options"
-            android:layout_marginTop="4dp"
-            android:backgroundTint="@color/md_theme_primary"
-            android:spinnerMode="dropdown"
+            android:background="?attr/colorSurface"
+            android:dropDownSelector="@drawable/sell_24px"
+            android:padding="@dimen/dp_10"
+            android:spinnerMode="dialog"
             android:popupBackground="@color/white" />
 
         <!-- Farmer Name -->
@@ -114,7 +116,6 @@
             android:text="Submit"
             android:textAllCaps="false"
             app:cornerRadius="16dp"
-            app:icon="@drawable/send_24px"
             app:iconTint="@android:color/white"
             android:textColor="@android:color/white"
             app:backgroundTint="@color/md_theme_primary" />
