@@ -1,4 +1,4 @@
-FarmGenius: Al
+#FarmGenius: Al
 
 Assistant for Sustainable Agriculture
 
